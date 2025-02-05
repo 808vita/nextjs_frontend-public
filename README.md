@@ -1,3 +1,7 @@
+
+[72a9521249919.webm](https://github.com/user-attachments/assets/ec7cd03a-69d9-42c6-b2f2-3b585a83bdee)
+
+
 # AdShield Next.js App
 
 A web application to detect and analyze social media ad scams using AI with Self-Learning capabilities.
