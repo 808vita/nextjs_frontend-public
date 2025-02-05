@@ -1,0 +1,61 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>docker_setup_windows | adshield_nextjs - v0.1.0</title><meta name="description" content="Documentation for adshield_nextjs"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">adshield_nextjs - v0.1.0</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb"><li><a href="../index.html">adshield_nextjs</a></li><li><a href="docker_setup_windows.html">docker_setup_windows</a></li></ul></div><div class="tsd-panel tsd-typography"><a id="md:docker-setup-on-windows" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Docker Setup on Windows<a href="#md:docker-setup-on-windows" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1><p>This document outlines the steps to set up Docker on a Windows system.</p>
+<a id="md:prerequisites" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Prerequisites<a href="#md:prerequisites" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Windows 10/11 64-bit:</strong> Docker Desktop requires a 64-bit version of Windows 10 or 11 Pro, Enterprise, or Education. For Home editions, Docker Desktop may be installed with limitations or require WSL2 backend.</li>
+<li><strong>Hardware Virtualization:</strong> Ensure that hardware virtualization is enabled in your computer's BIOS/UEFI settings.</li>
+<li><strong>WSL2 (Windows Subsystem for Linux 2):</strong> WSL2 is highly recommended for better performance.</li>
+</ul>
+<a id="md:installation-steps" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Installation Steps<a href="#md:installation-steps" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
+<li>
+<p><strong>Download Docker Desktop:</strong></p>
+<ul>
+<li>Go to the <a href="https://docs.docker.com/desktop/install/windows-install/">Docker Desktop for Windows</a> download page.</li>
+<li>Download the installer.</li>
+</ul>
+</li>
+<li>
+<p><strong>Run the Installer:</strong></p>
+<ul>
+<li>Double-click the downloaded <code>.exe</code> file to start the installation process.</li>
+<li>Follow the on-screen instructions.</li>
+<li>During installation, ensure you check the box to install with WSL2 backend , if prompted, or enable it if you have a windows pro edition.</li>
+<li>Docker Desktop will install Docker Engine, Docker CLI, Docker Compose and other necessary components.</li>
+</ul>
+</li>
+<li>
+<p><strong>Restart Your System:</strong></p>
+<ul>
+<li>After installation, you may be prompted to restart your computer. Do so to complete the setup.</li>
+</ul>
+</li>
+<li>
+<p><strong>Launch Docker Desktop:</strong></p>
+<ul>
+<li>Search for &quot;Docker Desktop&quot; in the Windows start menu and run it.</li>
+<li>The Docker Desktop app will start and may take a few minutes to initialize.</li>
+</ul>
+</li>
+<li>
+<p><strong>Verify Installation:</strong></p>
+<ul>
+<li>Open PowerShell or Command Prompt.</li>
+<li>Run the command <code>docker --version</code>.</li>
+<li>If Docker is installed correctly, you'll see the version of Docker Engine.</li>
+<li>Run the command <code>docker run hello-world</code>. This will download a test container image and run it to ensure that Docker is working correctly.</li>
+</ul>
+</li>
+</ol>
+<a id="md:using-docker" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Using Docker<a href="#md:using-docker" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Docker CLI:</strong> You can use the Docker CLI (<code>docker</code>) from PowerShell or Command Prompt to manage images, containers, volumes, and more.</li>
+<li><strong>Docker Desktop GUI:</strong> Docker Desktop provides a user-friendly interface to manage Docker resources.</li>
+</ul>
+<a id="md:common-issues" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Common Issues<a href="#md:common-issues" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>WSL2 Not Enabled:</strong> If you encounter issues, ensure that WSL2 is installed and enabled. You can install WSL2 following Microsoft's documentation, and enable it in the Docker desktop settings.</li>
+<li><strong>Hardware Virtualization:</strong> Docker requires hardware virtualization. If you experience errors related to virtualization, verify it is enabled in your BIOS/UEFI settings.</li>
+<li><strong>Conflicting Hypervisors:</strong> Ensure other hypervisors (like Hyper-V if not used for WSL2) are disabled or configured to work correctly with Docker.</li>
+</ul>
+<a id="md:links" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Links<a href="#md:links" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><a href="https://docs.docker.com/desktop/install/windows-install/">Docker Desktop for Windows</a></li>
+<li><a href="https://learn.microsoft.com/windows/wsl/install">Install WSL</a></li>
+<li><a href="https://docs.docker.com/">Docker Documentation</a></li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:docker-setup-on-windows"><span>Docker <wbr/>Setup on <wbr/>Windows</span></a><ul><li><a href="#md:prerequisites"><span>Prerequisites</span></a></li><li><a href="#md:installation-steps"><span>Installation <wbr/>Steps</span></a></li><li><a href="#md:using-docker"><span>Using <wbr/>Docker</span></a></li><li><a href="#md:common-issues"><span>Common <wbr/>Issues</span></a></li><li><a href="#md:links"><span>Links</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>adshield_nextjs - v0.1.0</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base=".."><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>

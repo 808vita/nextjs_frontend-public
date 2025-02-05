@@ -1,0 +1,637 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>report | adshield_nextjs - v0.1.0</title><meta name="description" content="Documentation for adshield_nextjs"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">adshield_nextjs - v0.1.0</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb"><li><a href="../index.html">adshield_nextjs</a></li><li><a href="report.html">report</a></li></ul></div><div class="tsd-panel tsd-typography"><a id="md:project-report-adshield---advanced-scam-detection-api" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Project Report: AdShield - Advanced Scam Detection API<a href="#md:project-report-adshield---advanced-scam-detection-api" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1><a id="md:1-introduction" class="tsd-anchor"></a><h2 class="tsd-anchor-link">1. Introduction<a href="#md:1-introduction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><p>This report offers a detailed look at the AdShield project, a FastAPI-based backend API aimed at detecting scam patterns in online ads. We've built it to be more than just a basic API, using modern technologies like Google's Gemini AI, the Facebook Meta Ads Library API, and a MongoDB database. AdShield includes various features for analyzing text, images, and combinations of both. It's designed to run smoothly in different environments using Docker. Our main goal with AdShield is to provide a useful tool for identifying and reducing fraudulent advertising, hopefully making the online experience a bit safer.</p>
+<a id="md:2-project-goals" class="tsd-anchor"></a><h2 class="tsd-anchor-link">2. Project Goals<a href="#md:2-project-goals" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The AdShield project was conceived with several overarching goals, each requiring meticulous planning and execution:</p>
+<ul>
+<li><strong>Automated Scam Detection (Advanced &amp; Adaptive):</strong>
+<ul>
+<li>To develop a highly accurate AI-driven system capable of detecting an extensive range of scam patterns across diverse advertising formats and content types.</li>
+<li>To integrate dynamic learning mechanisms enabling the system to adapt to novel and evolving scam techniques, maintaining its efficacy over time.</li>
+<li>To minimize false positives and negatives through precision, sensitivity and constant monitoring, to ensure accurate, reliable detection.</li>
+<li>To incorporate detailed analysis that not only flags the scam but also identifies specific scam patterns, thereby improving transparency and understanding.</li>
+</ul>
+</li>
+<li><strong>Meta Ads Data Collection (Comprehensive &amp; Robust):</strong>
+<ul>
+<li>To implement an efficient and scalable system for fetching large quantities of advertisement data from the Facebook Meta Ads Library API, ensuring robust data capture.</li>
+<li>To develop intelligent mechanisms to handle API rate limits, errors, and data irregularities, ensuring continuous and reliable operation without interruption.</li>
+<li>To integrate automated data sanitization, validation, and preprocessing steps, guaranteeing data integrity and quality prior to analysis.</li>
+<li>To fetch specific ad data such as screenshots and creative links for in-depth analysis.</li>
+</ul>
+</li>
+<li><strong>Data Storage and Management (Scalable &amp; Efficient):</strong>
+<ul>
+<li>To design and implement a flexible, scalable, and performant database schema within MongoDB to manage diverse data types such as raw ad data, AI analysis results, user-generated reports, and application settings.</li>
+<li>To utilize optimized indexing and query strategies to enable efficient retrieval and processing of data, minimizing latency and enhancing overall system responsiveness.</li>
+<li>To ensure data integrity and consistency using transactions and appropriate data validation techniques.</li>
+</ul>
+</li>
+<li><strong>Scalability and Portability (Dockerized &amp; Orchestrable):</strong>
+<ul>
+<li>To create fully containerized applications using Docker that can operate consistently across various environments and platforms, avoiding deployment incompatibilities, and simplifying the process.</li>
+<li>To produce highly optimized Docker images that are lightweight, secure, and designed for maximum runtime performance.</li>
+<li>To develop the application with an eye towards future scalability, incorporating best practices that enable seamless integration with container orchestration tools such as Kubernetes or Docker Swarm.</li>
+</ul>
+</li>
+<li><strong>Real-Time Analysis and Responsiveness:</strong></li>
+<li>To provide low latency API endpoints that support real time analysis, so that the frontend can get a fast and responsive experience.</li>
+<li>To ensure the application is efficient and can handle large numbers of requests, and that it can be horizontally scaled if needed.</li>
+<li><strong>Intuitive User Experience:</strong>
+<ul>
+<li>To design an application with a easy-to-use, intuitive user experience for end users.</li>
+<li>The application should provide all the tools and functionalities with a simple UI that is easy to understand and navigate.</li>
+</ul>
+</li>
+</ul>
+<a id="md:3-technology-stack" class="tsd-anchor"></a><h2 class="tsd-anchor-link">3. Technology Stack<a href="#md:3-technology-stack" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><a id="md:31-backend-fastapi" class="tsd-anchor"></a><h3 class="tsd-anchor-link">3.1. Backend (FastAPI)<a href="#md:31-backend-fastapi" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Framework:</strong> <a href="https://fastapi.tiangolo.com/">FastAPI</a> (Python)
+<ul>
+<li><strong>Rationale:</strong> FastAPI was selected for its exceptional performance, built-in support for asynchronous operations (<code>asyncio</code>), automatic data validation using Pydantic, and ease of API development and deployment. Its intuitive and modern approach allows for building robust APIs quickly.</li>
+<li><strong>Features:</strong> Leverages Python type hints for data validation, automatic API documentation generation (Swagger UI, ReDoc), dependency injection, and support for WebSocket connections.</li>
+</ul>
+</li>
+<li><strong>AI Model:</strong> <a href="https://ai.google.dev/gemini-api">Google Gemini</a>
+<ul>
+<li><strong>Rationale:</strong> Gemini was chosen for its cutting-edge multimodal capabilities, enabling simultaneous analysis of text and images. It provides high-quality results and offers advanced contextual understanding necessary for identifying complex scam patterns.</li>
+<li><strong>Implementation</strong>: It is used to analyze the ad data for scam detection and also for providing translations in multiple languages and for search grounding. The prompts and settings are configurable.</li>
+</ul>
+</li>
+<li><strong>Database:</strong> <a href="https://www.mongodb.com/">MongoDB</a>
+<ul>
+<li><strong>Rationale:</strong> MongoDB is utilized due to its flexible, schema-less nature, which is ideal for handling the dynamic and semi-structured data of ads and analysis results. It's scalability and high availability were also considered during selection.</li>
+<li><strong>Implementation</strong>: Uses the async <code>motor</code> library, and is configured with indexes to improve performance.</li>
+</ul>
+</li>
+<li><strong>Web Scraping:</strong> <a href="https://playwright.dev/">Playwright</a>
+<ul>
+<li><strong>Rationale</strong>: Playwright provides multi browser support and also has built in methods to interact with web pages, and perform actions like taking full page screenshots and waiting for elements to load etc.</li>
+<li><strong>Implementation</strong>: It is used to take screenshots of web pages, and the logic is abstracted in utility functions.</li>
+</ul>
+</li>
+<li><strong>HTTP Client:</strong> <a href="https://www.python-httpx.org/">httpx</a>
+<ul>
+<li><strong>Rationale:</strong> <code>httpx</code> is chosen due to its robust support for asynchronous http calls.</li>
+<li><strong>Implementation</strong>: Used for making http requests to the meta ads api, handling all possible error scenarios and providing response data.</li>
+</ul>
+</li>
+<li><strong>Task Scheduling:</strong> <a href="https://apscheduler.readthedocs.io/en/3.x/">APScheduler</a>
+<ul>
+<li><strong>Rationale:</strong> APScheduler is employed to schedule periodic data fetching and processing tasks, enabling the automated collection of data from Meta Ads Library API, it provides more control than other simple schedulers.</li>
+<li><strong>Implementation:</strong> Used with a background thread pool and is used to schedule data fetching for every two hours.</li>
+</ul>
+</li>
+<li><strong>Containerization:</strong> <a href="https://www.docker.com/">Docker</a>
+<ul>
+<li><strong>Rationale:</strong> Docker is used for the creation of reproducible and portable environments, providing consistent runtime behavior and simplifies the deployment process across different environments.</li>
+<li><strong>Implementation</strong>: The <code>Dockerfile</code> is well structured to minimize the image size and uses docker caching for fast builds.</li>
+</ul>
+</li>
+<li><strong>Asynchronous Operations:</strong> <code>asyncio</code> and <code>motor</code>
+<ul>
+<li><strong>Rationale:</strong> <code>asyncio</code> allows the application to handle multiple concurrent tasks without blocking, and combined with the MongoDB async client using <code>motor</code> the system provides optimal performance for the data heavy tasks.</li>
+<li><strong>Implementation:</strong> All the data heavy tasks, such as accessing external APIs, data processing and database interactions, are performed using asynchronous code.</li>
+</ul>
+</li>
+<li><strong>Environment Variables:</strong> <a href="https://pypi.org/project/python-dotenv/">python-dotenv</a>
+<ul>
+<li><strong>Rationale:</strong> Using environment variables separates configuration from the application code and enhances security and portability.</li>
+<li><strong>Implementation:</strong> The application uses the <code>.env</code> file to store all the configurations and uses the <code>python-dotenv</code> to load those configurations.</li>
+</ul>
+</li>
+</ul>
+<a id="md:32-frontend" class="tsd-anchor"></a><h3 class="tsd-anchor-link">3.2. Frontend<a href="#md:32-frontend" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong>Framework:</strong> <a href="https://nextjs.org/">Next.js</a> (JavaScript/TypeScript)
+<ul>
+<li><strong>Rationale:</strong> Next.js was chosen for its server-side rendering (SSR), static site generation (SSG), and client-side rendering (CSR) capabilities. It offers excellent performance and supports a component-based architecture that makes complex UI building easy.</li>
+<li>It provides built in features like routing and rendering.</li>
+</ul>
+</li>
+<li><strong>API Interaction:</strong>
+<ul>
+<li><strong>Implementation</strong>: Uses RESTful API endpoints of the FastAPI backend, and makes requests using standard libraries or modules like fetch, or axios. It also uses custom hooks to manage the data fetching process.</li>
+<li>Responses are handled in JSON format.</li>
+</ul>
+</li>
+<li><strong>UI Components:</strong>
+<ul>
+<li><strong>Rationale:</strong> A pre-built UI library or a custom component library helps maintain consistency and enhances the development speed.</li>
+<li><strong>Implementation</strong>: Could use libraries like Material UI, Chakra UI, Tailwind CSS, Ant Design, or custom styles.</li>
+</ul>
+</li>
+<li><strong>State Management:</strong>
+<ul>
+<li><strong>Rationale:</strong> Effective state management is crucial for handling complex application data.</li>
+<li><strong>Implementation</strong>: Uses Redux, React Context API, Zustand, or similar for global state management. This ensures that updates are handled efficiently across all components, especially when multiple users are interacting with the system.</li>
+</ul>
+</li>
+</ul>
+<a id="md:4-system-architecture" class="tsd-anchor"></a><h2 class="tsd-anchor-link">4. System Architecture<a href="#md:4-system-architecture" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The architecture of the AdShield system is meticulously designed around several key interconnected components:</p>
+<ol>
+<li>
+<p><strong>API Endpoints (Detailed Specifications):</strong></p>
+<ul>
+<li><code>/api/analyze/text</code>:
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request Body:</strong> JSON object with a <code>text</code> field containing the text to be analyzed (e.g., <code>{&quot;text&quot;: &quot;This is a test message.&quot;}</code>).</li>
+<li><strong>Response Body:</strong> JSON object with fields like <code>is_scam</code> (boolean), <code>reason</code> (string, optional), and <code>keywords</code> (array of strings, optional) (e.g., <code>{&quot;is_scam&quot;: true, &quot;reason&quot;: &quot;Contains suspicious terms&quot;, &quot;keywords&quot;: [&quot;test&quot;, &quot;message&quot;]}</code>).</li>
+</ul>
+</li>
+<li><code>/api/analyze/image</code>:
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request Body:</strong> JSON object with <code>image_base64</code> (string, base64 encoded image) and <code>mime_type</code> (string) (e.g., <code>{&quot;image_base64&quot;: &quot;/9j/4AAQSkZJRgABAQ...&quot;, &quot;mime_type&quot;: &quot;image/jpeg&quot;}</code>).</li>
+<li><strong>Response Body:</strong> JSON object similar to text analysis, but based on image analysis results.</li>
+</ul>
+</li>
+<li><code>/api/analyze/multimodal</code>:
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request Body:</strong> JSON object with <code>text</code> (string), <code>image_base64</code> (string), and <code>mime_type</code> (string) (e.g., <code>{&quot;text&quot;: &quot;Check this image.&quot;, &quot;image_base64&quot;: &quot;/9j/4AAQSkZJRgABAQ...&quot;, &quot;mime_type&quot;: &quot;image/png&quot;}</code>).</li>
+<li><strong>Response Body:</strong> JSON object indicating scam detection results based on both text and image analysis.</li>
+</ul>
+</li>
+<li><code>/api/analyze/search</code>:
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+</ul>
+</li>
+<li><strong>Request Body:</strong> JSON object with a <code>query</code> field containing the search query (e.g., <code>{&quot;query&quot;: &quot;test search&quot;}</code>).</li>
+<li><strong>Response Body:</strong> JSON object with field <code>gemini_response</code> which contains the search results.</li>
+<li><code>/api/translate</code>:
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request Body:</strong> JSON object with a <code>text</code> field to be translated (e.g., <code>{&quot;text&quot;: &quot;hello&quot;}</code>).</li>
+<li><strong>Response Body:</strong> JSON object with fields <code>tamil</code> , <code>hindi</code>, and <code>telugu</code> translations.</li>
+</ul>
+</li>
+<li><code>/api/meta-ads</code>:
+<ul>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Query Parameters:</strong> Supports optional parameters like <code>limit</code> (number of ads), <code>after</code> (pagination), <code>ad_delivery_date_min</code> (start date), <code>search_terms</code> (keywords), and <code>ad_reached_countries</code> (list of countries).</li>
+<li><strong>Response Body:</strong> JSON object with Meta Ads data, including fields like <code>ad_creative_link_captions</code>, <code>ad_creative_link_descriptions</code>, <code>ad_snapshot_url</code>, <code>page_id</code>, <code>page_name</code>, <code>publisher_platforms</code>, and <code>ad_delivery_date</code>.</li>
+</ul>
+</li>
+<li><code>/api/screenshot</code>:
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request Body:</strong> JSON object containing a <code>url</code> (string) to capture (e.g., <code>{&quot;url&quot;: &quot;https://www.example.com&quot;}</code>).</li>
+<li><strong>Response Body:</strong> JSON object containing a <code>base64_string</code> field with base64 encoded full page screenshot.</li>
+</ul>
+</li>
+<li><code>/api/meta-login</code>:
+<ul>
+<li><strong>Method</strong>: <code>POST</code></li>
+<li><strong>Request Body</strong>: None</li>
+<li><strong>Response Body</strong>: JSON object with status message and list of screenshots for different steps</li>
+</ul>
+</li>
+<li><code>/api/meta-login-ws</code>:
+<ul>
+<li><strong>Method</strong>: <code>Websocket</code></li>
+<li><strong>Request Body</strong>: Captcha or 2FA input via a JSON message over websocket</li>
+<li><strong>Response Body</strong>: Real time JSON messages to send data such as screenshots, and status over websocket.</li>
+</ul>
+</li>
+<li><code>/api/test-db</code>:
+<ul>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Request Body:</strong> None</li>
+<li><strong>Response Body:</strong> JSON object with the result of the MongoDB connection test.</li>
+</ul>
+</li>
+<li><code>/api/settings</code>:
+<ul>
+<li><strong>Method:</strong> <code>GET</code> for fetching settings and <code>POST</code> for updating settings.</li>
+</ul>
+</li>
+<li><strong>Request Body:</strong> <code>{&quot;results_limit&quot;: 10}</code> for <code>POST</code>, none for <code>GET</code></li>
+<li><strong>Response Body:</strong> JSON object with the result limits configuration data.</li>
+<li><code>/api/access-token</code>:</li>
+<li><strong>Method</strong>: <code>GET</code> for fetching the current access token, <code>POST</code> for updating the access token</li>
+<li><strong>Request Body</strong>: <code>{&quot;token&quot;:&quot;&lt;access_token&gt;&quot;}</code> for <code>POST</code>, none for <code>GET</code></li>
+<li><strong>Response Body:</strong> JSON object with access token data.</li>
+<li><code>/api/search-terms</code>:
+<ul>
+<li><strong>Method:</strong> <code>GET</code> for getting all terms, <code>POST</code> for creating new, <code>PUT</code> for updating, <code>DELETE</code> for deleting.</li>
+<li><strong>Request Body</strong> : JSON object with fields <code>term</code>, <code>translated_terms</code>, and extracted (e.g.,<code>{&quot;term&quot;: &quot;test&quot;, &quot;translated_terms&quot;: [&quot;test_tamil&quot;, &quot;test_hindi&quot;], &quot;extracted&quot;:true}</code> )</li>
+<li><strong>Response Body:</strong> JSON object for all operations.</li>
+</ul>
+</li>
+<li><code>/api/search-terms-all</code>:
+<ul>
+<li><strong>Method</strong>: <code>GET</code></li>
+<li><strong>Request Body</strong>: None</li>
+<li><strong>Response Body:</strong> JSON object with list of all available search terms.</li>
+</ul>
+</li>
+<li><code>/api/checked-meta-ads</code>:</li>
+<li><strong>Method</strong>: <code>GET</code></li>
+<li><strong>Query Parameters</strong> : <code>limit</code> (optional) for setting the number of ads to fetch per page, <code>offset</code> (optional) to set the number of ads to skip.</li>
+<li><strong>Request Body</strong> : None</li>
+<li><strong>Response Body:</strong> List of JSON object containing all the fetched ads data.</li>
+<li><code>/api/checked-meta-ads/{ad_id}</code>:
+<ul>
+<li><strong>Method</strong>: <code>GET</code></li>
+<li><strong>Request Body</strong>: None</li>
+<li><strong>Response Body</strong>: JSON object with ad data for the specific ad id.</li>
+</ul>
+</li>
+<li><code>/api/public-awareness</code>:
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request Body:</strong> JSON object with <code>category_name</code>, <code>common_pattern</code>, and <code>potential_user_targets</code> (array of strings) to create public awareness information.</li>
+<li><strong>Response Body:</strong> JSON object for the created public awareness data.</li>
+</ul>
+</li>
+<li><code>/api/categories</code>:
+<ul>
+<li><strong>Method</strong>: <code>GET</code></li>
+<li><strong>Request Body</strong> : None</li>
+<li><strong>Response Body</strong>: A list of all available categories in the database.</li>
+</ul>
+</li>
+<li><code>/api/stats</code>:
+<ul>
+<li><strong>Method:</strong> <code>GET</code></li>
+<li><strong>Request Body:</strong> None</li>
+<li><strong>Response Body:</strong> JSON object with statistics data.</li>
+</ul>
+</li>
+<li><code>/api/reported-ads</code>:
+<ul>
+<li><strong>Method:</strong> <code>POST</code></li>
+<li><strong>Request Body:</strong> JSON object with the <code>ad_id</code> and <code>report_reason</code> to create a reported ad (e.g., <code>{&quot;ad_id&quot;: &quot;1234&quot;, &quot;report_reason&quot;: &quot;Scam&quot;}</code>).</li>
+<li><strong>Response Body:</strong> JSON object with created reported ad data.</li>
+</ul>
+</li>
+<li><code>/api/reported-ads/{ad_id}</code>:
+<ul>
+<li><strong>Method:</strong> <code>GET</code> to get the reported ad data, <code>PUT</code> to update an existing reported ad data, <code>DELETE</code> to delete a reported ad.</li>
+<li><strong>Request Body:</strong> JSON object with <code>reported</code> set to <code>true</code> or <code>false</code> for updating an ad. (e.g., <code>{&quot;reported&quot;: true}</code>)</li>
+<li><strong>Response Body</strong>: JSON object of the requested data.</li>
+</ul>
+</li>
+<li><code>/api/reported-ads-all</code>:
+<ul>
+<li><strong>Method</strong>: <code>GET</code></li>
+<li><strong>Request Body</strong>: None</li>
+<li><strong>Response Body:</strong> List of all reported ads data in JSON.</li>
+</ul>
+</li>
+<li><code>/api/reported-ads-pending</code>:
+<ul>
+<li><strong>Method</strong>: <code>GET</code></li>
+<li><strong>Request Body</strong>: None</li>
+<li><strong>Response Body:</strong> List of all pending reported ads data in JSON.</li>
+</ul>
+</li>
+<li><code>/api/export/reported-ads</code>:
+<ul>
+<li><strong>Method</strong>: <code>GET</code></li>
+<li><strong>Request Body</strong>: None</li>
+<li><strong>Response Body</strong>: CSV data of all the reported ads.</li>
+</ul>
+</li>
+<li><code>/api/export/meta-ads</code>:
+<ul>
+<li><strong>Method</strong>: <code>GET</code></li>
+<li><strong>Request Body</strong>: None</li>
+<li><strong>Response Body</strong>: CSV data of all the meta ads excluding the base64 strings.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Data Fetching and Processing:</strong></p>
+<ul>
+<li><strong>Meta Ads Data:</strong> Fetches ads data using the Meta Ads Library API, and manages pagination.</li>
+<li><strong>Screenshot Capture:</strong> Leverages Playwright to create full-page screenshots of landing pages and creative links, handling scenarios such as complex JavaScript and dynamic content.</li>
+<li><strong>Gemini Analysis:</strong> Uses the Gemini API with custom prompts, that are designed to provide a balance between precision and performance, and used to identify patterns indicative of a scam.</li>
+<li>Includes text, image and multimodal analysis.</li>
+<li>Also includes a category identification module for categorization of ads.</li>
+<li><strong>Data Sanitization:</strong> All data is sanitized before processing, removing any null values or unexpected characters.</li>
+</ul>
+</li>
+<li>
+<p><strong>Database Interaction :</strong></p>
+<ul>
+<li>The MongoDB connection is set up using an asynchronous client (<code>motor</code>).</li>
+<li>Data is stored using proper schema in collections for different types of data.</li>
+<li>Each collection is indexed to optimize search and retrieval, and improve query performance.</li>
+<li>Includes support for update operations, and data manipulation.</li>
+<li>All database operations are asynchronous to prevent blocking.</li>
+</ul>
+</li>
+<li>
+<p><strong>User Interface :</strong></p>
+<ul>
+<li>The frontend displays user interfaces using a UI library.</li>
+<li>The user can submit text, image or URLs for analysis, and see the results.</li>
+<li>The results include screenshots, gemini analysis data, and also the option to report the ads.</li>
+<li>The user can also manage the meta ad keywords, and review the search terms.</li>
+<li>Provides data visualizations and dashboards.</li>
+</ul>
+</li>
+<li>
+<p><strong>Containerization (Comprehensive):</strong></p>
+<ul>
+<li>The application is containerized with a multi-stage build process in the Dockerfile to optimize the image size.</li>
+<li>The <code>Dockerfile</code> utilizes a lightweight python base image, which minimizes the image size.</li>
+<li>It uses docker caching to reduce the build time.</li>
+<li>The <code>CMD</code> instruction ensures that the docker container is run using <code>fastapi run</code> when the container starts.</li>
+</ul>
+</li>
+</ol>
+<a id="md:5-key-features" class="tsd-anchor"></a><h2 class="tsd-anchor-link">5. Key Features<a href="#md:5-key-features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Text Analysis (Sophisticated):</strong>
+<ul>
+<li>Advanced text processing techniques and fine-tuned Gemini prompts are used for identifying complex scam patterns.</li>
+<li>Returns comprehensive data with keywords and reasons</li>
+</ul>
+</li>
+<li><strong>Image Analysis (Advanced):</strong>
+<ul>
+<li>The Gemini model is configured with appropriate parameters to ensure accurate visual processing for scam detection.</li>
+<li>Returns a JSON response with details about the scan status, keywords and reasons.</li>
+</ul>
+</li>
+<li><strong>Multimodal Analysis (Comprehensive):</strong>
+<ul>
+<li>The system combines text and image data and performs an analysis using the multimodal capabilities of Gemini to detect complex scams.</li>
+<li>Provides detailed data with all the information.</li>
+</ul>
+</li>
+<li><strong>Search Grounding (Advanced):</strong>
+<ul>
+<li>Uses the search grounding feature of Gemini to perform a search on the query provided.</li>
+</ul>
+</li>
+<li><strong>Translation (Advanced):</strong>
+<ul>
+<li>Uses gemini to provide translations in multiple languages such as Tamil, Hindi, and Telugu.</li>
+</ul>
+</li>
+<li><strong>Meta Ads Data Fetching (Robust):</strong>
+<ul>
+<li>Fetches data from the Meta Ads Library using appropriate filtering parameters to collect targeted data.</li>
+<li>Includes logic to retry failed requests due to rate limiting or network errors.</li>
+</ul>
+</li>
+<li><strong>Web Scraping (Efficient)</strong>:
+<ul>
+<li>Uses playwright to efficiently capture screenshots of web pages with support for complex and dynamic web pages.</li>
+<li>The logic is implemented with appropriate timeout and wait conditions to handle varied scenarios.</li>
+</ul>
+</li>
+<li><strong>Real-time meta login (Interactive)</strong>:
+<ul>
+<li>Uses playwright and provides real time response for each step of the login process.</li>
+<li>It uses websocket connection for real time communication, which is also used to send data for captcha and 2FA to the backend.</li>
+</ul>
+</li>
+<li><strong>Database Integration (Scalable):</strong>
+<ul>
+<li>Uses MongoDB to store the results and to manage ad data, and user reports.</li>
+<li>Data is stored with optimized schemas and appropriate indexes for efficient retrieval.</li>
+</ul>
+</li>
+<li><strong>Scheduled Tasks (Customizable):</strong>
+<ul>
+<li>APScheduler is used to automate the process of meta ads data collection at fixed intervals.</li>
+<li>This also helps to minimize the manual interventions and ensures consistent data flow in the system.</li>
+</ul>
+</li>
+<li><strong>API Endpoints (Comprehensive)</strong>:
+<ul>
+<li>Provides a REST API for all the functionalities that the system has.</li>
+<li>Each API endpoint is documented with detailed specifications.</li>
+</ul>
+</li>
+<li><strong>CSV export (Efficient):</strong>
+<ul>
+<li>Data can be exported as CSV to enable users to use the data offline and perform further analysis.</li>
+</ul>
+</li>
+<li><strong>Dockerized Deployment (Portable):</strong>
+<ul>
+<li>The application is deployed using docker and all the dependencies are included in the docker image which can be deployed to any docker supported environment.</li>
+</ul>
+</li>
+</ul>
+<a id="md:6-code-structure" class="tsd-anchor"></a><h2 class="tsd-anchor-link">6. Code Structure<a href="#md:6-code-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The project's code structure has been deliberately organized to ensure modularity, maintainability, and scalability:</p>
+<ul>
+<li><code>.dockerignore</code>:
+<ul>
+<li>Purpose: Contains a list of patterns for files and directories that Docker should ignore during the build process.</li>
+<li>Contents: Usually includes <code>.env</code> files, <code>__pycache__</code> directories, and other files that are not needed in the production container.</li>
+</ul>
+</li>
+<li><code>.gitignore</code>:
+<ul>
+<li>Purpose: Specifies files and directories that Git should ignore during version control.</li>
+<li>Contents: Includes <code>__pycache__</code> directories, Python byte code files (<code>*.pyc</code>), log files, virtual environment directories, etc.</li>
+</ul>
+</li>
+<li><code>Dockerfile</code>:
+<ul>
+<li>Purpose: Contains instructions for creating the Docker image, including the base image, build steps, and runtime command.</li>
+<li>Key Sections:
+<ul>
+<li><code>FROM python:3.13.1</code>: Sets the base image as the official Python 3.13.1 image.</li>
+<li><code>WORKDIR /code</code>: Sets the working directory within the Docker image.</li>
+<li><code>COPY ./requirements.txt /code/requirements.txt</code>: Copies the requirements file to the Docker container.</li>
+<li><code>RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt</code>: Installs all python dependencies in the requirements file.</li>
+<li><code>RUN playwright install</code>: Installs playwright browser automation library.</li>
+<li><code>RUN playwright install-deps</code>: Installs playwright dependencies.</li>
+<li><code>COPY ./app /code/app</code>: Copies the entire <code>/app</code> directory, containing all the source code.</li>
+<li><code>CMD [&quot;fastapi&quot;, &quot;run&quot;, &quot;app/main.py&quot;, &quot;--port&quot;, &quot;80&quot;]</code>: Specifies the command to start the application.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>app/</code>:
+<ul>
+<li><code>__init__.py</code>:
+<ul>
+<li>Purpose: Used to mark the <code>app</code> directory as a Python package and to enable relative imports.</li>
+<li>Contents: Often empty but essential.</li>
+</ul>
+</li>
+<li><code>api/</code>:
+<ul>
+<li>Purpose: Houses the code for all API route definitions.</li>
+<li><code>gemini.py</code>: Contains API endpoints specifically designed for interaction with Google’s Gemini API.</li>
+<li><code>meta.py</code>: Includes API endpoints for fetching data from the Meta Ads Library API and for interacting with Playwright for screenshots.</li>
+<li><code>mongodb.py</code>: Contains API routes for various database operations.</li>
+</ul>
+</li>
+<li><code>main.py</code>:
+<ul>
+<li>Purpose: The main entry point of the FastAPI application.</li>
+<li><strong>Functionality:</strong> This file sets up the FastAPI application, the CORS middleware, includes the routes, establishes the database connection, starts the scheduler, and has the lifespan setup.</li>
+</ul>
+</li>
+<li><code>mongodb.py</code>:
+<ul>
+<li>Purpose: Contains MongoDB connection configurations and methods.</li>
+<li>Functionality: Handles the database connections using the <code>motor</code> library, and also has the method to close the connection gracefully.</li>
+</ul>
+</li>
+<li><code>scheduler_utils.py</code>:
+<ul>
+<li>Purpose: Houses the functions for scheduling tasks such as fetching ad data and analysis.</li>
+<li>Functionality: Has logic to fetch meta ads and perform all the processing, also has a category identification module.</li>
+</ul>
+</li>
+<li><code>schemas.py</code>:
+<ul>
+<li>Purpose: Defines Pydantic models for all the incoming request and outgoing response data.</li>
+<li>Functionality: Ensures that all the incoming and outgoing data conforms to the defined schema.</li>
+</ul>
+</li>
+<li><code>utils.py</code>:
+<ul>
+<li>Purpose: Contains utility functions and shared logic.</li>
+<li>Functionality: Has methods for all data handling operations such as interacting with external APIs, processing responses, data analysis, screenshot capture etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>requirements.txt</code>:
+<ul>
+<li>Purpose: Specifies all Python packages and versions used by the application.</li>
+<li>Contents: Includes <code>fastapi</code>, <code>uvicorn</code>, <code>httpx</code>, <code>motor</code>, <code>google-generativeai</code>, <code>apscheduler</code>, <code>python-dotenv</code>, <code>playwright</code> and other dependencies.</li>
+</ul>
+</li>
+</ul>
+<a id="md:7-key-implementation-details-extensive" class="tsd-anchor"></a><h2 class="tsd-anchor-link">7. Key Implementation Details (Extensive)<a href="#md:7-key-implementation-details-extensive" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Asynchronous Programming:</strong>
+<ul>
+<li>All I/O bound operations are performed using <code>asyncio</code>, to avoid blocking the main thread and improve performance.</li>
+<li>Async database connections are used by the <code>motor</code> library which provides non blocking IO.</li>
+</ul>
+</li>
+<li><strong>Docker Layer Caching</strong>: The docker file is optimized for caching by keeping the <code>COPY ./app /code/app</code> at the end of the file, since that is more likely to be changed, which results in less build time.</li>
+<li><strong>Environment Variables:</strong>
+<ul>
+<li>The application reads environment variables using <code>python-dotenv</code> library.</li>
+<li>Sensitive data such as API keys, database uris and passwords are stored in the <code>.env</code> file.</li>
+</ul>
+</li>
+<li><strong>Pydantic Models:</strong>
+<ul>
+<li>Pydantic is used for data validation, serialization and schema definition for all request and response bodies.</li>
+<li>This ensures that all incoming and outgoing data matches the intended format and are also validated.</li>
+<li>These models are also used for generating the API documentation.</li>
+</ul>
+</li>
+<li><strong>Error Handling:</strong>
+<ul>
+<li>The application uses <code>HTTPException</code> from FastAPI to provide consistent error responses.</li>
+<li>Includes global error handling middleware to catch and log exceptions.</li>
+</ul>
+</li>
+<li><strong>Logging:</strong>
+<ul>
+<li>Logging is configured using the standard python <code>logging</code> module.</li>
+<li>The application logs important events such as start and end of a scheduled task, new ad insertion and any exceptions that occur.</li>
+<li>This allows proper tracking of the system and makes it easier to debug any issues.</li>
+</ul>
+</li>
+<li><strong>CORS Middleware</strong>:
+<ul>
+<li>CORS middleware from FastAPI is used to allow cross origin resource sharing, to allow clients from different domains to access the API.</li>
+</ul>
+</li>
+</ul>
+<a id="md:8-challenges-detailed-analysis" class="tsd-anchor"></a><h2 class="tsd-anchor-link">8. Challenges (Detailed Analysis)<a href="#md:8-challenges-detailed-analysis" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>API Rate Limiting:</strong>
+<ul>
+<li><strong>Specific Challenge:</strong> The Meta Ads Library API has strict rate limits which vary based on the access level, if these limits are exceeded, the system has to handle this situation gracefully and should implement mechanisms to wait and retry, or store the data for later processing.</li>
+<li><strong>Mitigation:</strong> Implemented exponential backoff with jitter to prevent requests from overloading the API when errors occur and also implement caching mechanisms to reduce repeated requests.</li>
+</ul>
+</li>
+<li><strong>Gemini AI Model Limitations:</strong>
+<ul>
+<li><strong>Specific Challenge:</strong> Gemini is a large language model which is not 100% accurate and might provide wrong responses to certain prompts or data input. The prompts have to be carefully designed to get the best possible results.</li>
+<li>The model might also have some bias in the data it is trained on which results in some biased analysis results.</li>
+<li><strong>Mitigation:</strong> Using a well designed prompt that specifies clear instructions for Gemini can improve accuracy and also add manual review process to improve the results.</li>
+</ul>
+</li>
+<li><strong>Playwright Instability:</strong>
+<ul>
+<li><strong>Specific Challenge:</strong> Playwright can face issues while scraping websites due to complex javascript or dynamic content loading, and it needs proper configuration to wait for these resources to load.</li>
+<li>Websites change regularly, and the playwright locators might fail due to these changes.</li>
+<li><strong>Mitigation:</strong> Setting proper wait conditions for playwright can mitigate loading issues, also implement proper error handling to handle locators that are not found.</li>
+</ul>
+</li>
+<li><strong>Handling Captcha and 2FA:</strong>
+<ul>
+<li><strong>Specific Challenge:</strong> During login process in the <code>meta-login</code> api endpoint, the facebook login page can sometimes show captcha verification or two factor authentication process, which is very difficult to automate.</li>
+<li><strong>Mitigation:</strong> The websocket connection in <code>meta-login-ws</code> api endpoint allows client to receive the screenshot and send back the data, this works for most captcha and 2FA scenarios.</li>
+</ul>
+</li>
+<li><strong>API Verification:</strong>
+<ul>
+<li><strong>Specific Challenge:</strong> The Meta Ads Library API has strict verification process, and without proper verification the api access will be severely restricted and rate limited.</li>
+<li><strong>Mitigation:</strong> The verification process has to be initiated with the Meta developer team and has to comply with all the policies and rules.</li>
+</ul>
+</li>
+<li><strong>Database Performance:</strong>
+<ul>
+<li><strong>Specific Challenge:</strong> As the data volume grows, poorly designed schemas or inefficient indexes will result in slow performance.</li>
+<li><strong>Mitigation:</strong> Ensure all data collections are properly indexed, and optimize query parameters to retrieve data efficiently.</li>
+</ul>
+</li>
+</ul>
+<a id="md:9-future-enhancements-comprehensive" class="tsd-anchor"></a><h2 class="tsd-anchor-link">9. Future Enhancements (Comprehensive)<a href="#md:9-future-enhancements-comprehensive" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Advanced Gemini Prompts and Fine-Tuning:</strong>
+<ul>
+<li><strong>Enhancement:</strong> Explore advanced prompt engineering techniques, such as few-shot learning, chain-of-thought reasoning, and fine-tuning Gemini to improve its accuracy and to add more data such as more detailed scam information, categories and affected users.</li>
+</ul>
+</li>
+<li><strong>Advanced Error Handling and Logging:</strong>
+<ul>
+<li><strong>Enhancement:</strong> Implement advanced logging strategies using log levels, log rotation and log aggregation to better monitor and debug the application. Add integration with tools like Sentry or ELK stack for better logging and error tracking.</li>
+<li>Customize <code>HTTPException</code> responses for different error scenarios and also include error codes for better clarity.</li>
+</ul>
+</li>
+<li><strong>User Authentication and Authorization:</strong>
+<ul>
+<li><strong>Enhancement:</strong> Implement user authentication using OAuth 2.0, JSON Web Tokens (JWT), or similar methods, to protect API endpoints.</li>
+<li>Implement fine grained control using role based access controls for various functions.</li>
+</ul>
+</li>
+<li><strong>Advanced Scheduler Configurations:</strong>
+<ul>
+<li><strong>Enhancement</strong>: Enable support for cron expressions for scheduling, to implement more advanced scheduling rules and control data fetching during different times of the day.</li>
+</ul>
+</li>
+<li><strong>Improved Captcha Handling</strong>:
+<ul>
+<li><strong>Enhancement:</strong> Implement an automated captcha solving mechanism using a 3rd party service, or a more robust mechanism that can handle most captcha or 2FA methods with minimal user intervention.</li>
+</ul>
+</li>
+<li><strong>Performance Optimization:</strong>
+<ul>
+<li><strong>Enhancement:</strong> Optimize database queries, code, and image processing to improve speed and efficiency. Also add support for caching frequently accessed data to reduce load on the database.</li>
+</ul>
+</li>
+<li><strong>Real-time Updates via WebSockets:</strong>
+<ul>
+<li><strong>Enhancement:</strong> Implement WebSocket connections to provide real-time updates to the user interface, such as updates when new ads are analyzed, when reports are generated, or when any database operations are performed.</li>
+</ul>
+</li>
+<li><strong>Improved Reporting and Visualization:</strong>
+<ul>
+<li><strong>Enhancement</strong>: Add support for detailed reporting and data visualizations for admin users.</li>
+<li>The data can be displayed using various chart libraries such as plotly or chart.js</li>
+</ul>
+</li>
+<li><strong>Frontend Enhancements</strong>:
+<ul>
+<li><strong>Enhancement</strong>: Add support for filtering and searching data, advanced settings for controlling the data processing, and for reviewing the reports that are generated.</li>
+</ul>
+</li>
+</ul>
+<a id="md:10-conclusion" class="tsd-anchor"></a><h2 class="tsd-anchor-link">10. Conclusion<a href="#md:10-conclusion" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The AdShield project is our attempt at creating a useful way to detect and reduce online ad scams. Using FastAPI, Google's Gemini AI, the Meta Ads Library API, and MongoDB, we hope it provides a helpful platform for finding malicious patterns, managing data, and providing some useful information. We've aimed to make AdShield scalable, flexible, and easy to use, and the Docker setup should make it simple to deploy in different environments. Our goal is making the internet a bit safer.</p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:project-report-adshield---advanced-scam-detection-api"><span>Project <wbr/>Report: <wbr/>Ad<wbr/>Shield -<wbr/> <wbr/>Advanced <wbr/>Scam <wbr/>Detection API</span></a><ul><li><a href="#md:1-introduction"><span>1. <wbr/>Introduction</span></a></li><li><a href="#md:2-project-goals"><span>2. <wbr/>Project <wbr/>Goals</span></a></li><li><a href="#md:3-technology-stack"><span>3. <wbr/>Technology <wbr/>Stack</span></a></li><li><ul><li><a href="#md:31-backend-fastapi"><span>3.1. <wbr/>Backend (<wbr/>FastAPI)</span></a></li><li><a href="#md:32-frontend"><span>3.2. <wbr/>Frontend</span></a></li></ul></li><li><a href="#md:4-system-architecture"><span>4. <wbr/>System <wbr/>Architecture</span></a></li><li><a href="#md:5-key-features"><span>5. <wbr/>Key <wbr/>Features</span></a></li><li><a href="#md:6-code-structure"><span>6. <wbr/>Code <wbr/>Structure</span></a></li><li><a href="#md:7-key-implementation-details-extensive"><span>7. <wbr/>Key <wbr/>Implementation <wbr/>Details (<wbr/>Extensive)</span></a></li><li><a href="#md:8-challenges-detailed-analysis"><span>8. <wbr/>Challenges (<wbr/>Detailed <wbr/>Analysis)</span></a></li><li><a href="#md:9-future-enhancements-comprehensive"><span>9. <wbr/>Future <wbr/>Enhancements (<wbr/>Comprehensive)</span></a></li><li><a href="#md:10-conclusion"><span>10. <wbr/>Conclusion</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>adshield_nextjs - v0.1.0</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base=".."><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>

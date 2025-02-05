@@ -1,0 +1,156 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>adshield_nextjs - v0.1.0</title><meta name="description" content="Documentation for adshield_nextjs"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">adshield_nextjs - v0.1.0</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h2>adshield_nextjs - v0.1.0</h2></div><div class="tsd-panel tsd-typography"><a id="md:adshield-nextjs-app" class="tsd-anchor"></a><h1 class="tsd-anchor-link">AdShield Next.js App<a href="#md:adshield-nextjs-app" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>A web application to detect and analyze social media ad scams using AI with Self-Learning capabilities.</p>
+<a id="md:setup" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Setup<a href="#md:setup" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
+<li>
+<p><strong>Clone:</strong> <code>Clone the codebase &amp; have latest NPM installed on you device</code></p>
+</li>
+<li>
+<p><strong>Install:</strong> <code>npm install</code></p>
+</li>
+<li>
+<p><strong>Environment Variables:</strong> Create a <code>.env.local</code> file in the root and set the following:</p>
+<ul>
+<li><code>MONGODB_URI</code>: Your MongoDB connection string.</li>
+<li><code>NEXTAUTH_SECRET</code>: Your secret key for NextAuth.js.</li>
+<li><code>META_APP_ID</code>: Meta app ID to use for Meta Graph API.</li>
+<li><code>META_APP_SECRET</code>: Meta secret ID.</li>
+<li><code>META_ACCESS_TOKEN</code>: Meta access token.</li>
+<li><code>NEXT_PUBLIC_FASTAPI_API_URI</code>: URL for the backend FastAPI application.</li>
+</ul>
+</li>
+<li>
+<p><strong>Run Dev Server:</strong> <code>npm run dev</code> (starts on <code>http://localhost:3000</code>)</p>
+</li>
+<li>
+<p><strong>Generate Docs:</strong> <code>npm run docs</code> (outputs to <code>public/docs</code>)</p>
+</li>
+</ol>
+<a id="md:tech" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Tech<a href="#md:tech" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Next.js (React)</li>
+<li>TypeScript</li>
+<li>Tailwind CSS</li>
+<li>NextUI</li>
+<li>Mongoose</li>
+<li>NextAuth.js</li>
+<li>Google Generative AI</li>
+</ul>
+<a id="md:folder-structure" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Folder Structure<a href="#md:folder-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>
+<p><code>.</code>: Root config files (<code>.gitignore</code>, <code>next.config.mjs</code>, etc.)</p>
+</li>
+<li>
+<p><code>documents/</code>: Markdown documentation.</p>
+</li>
+<li>
+<p><code>lib/</code>: Core logic (<code>auth.ts</code>, <code>mongodb.ts</code>).</p>
+</li>
+<li>
+<p><code>models/</code>: Database schemas (<code>Users.ts</code>).</p>
+</li>
+<li>
+<p><code>schemas/</code>:  Interfaces for request data (<code>index.ts</code>)</p>
+</li>
+<li>
+<p><code>src/</code>: Application source code.</p>
+<ul>
+<li><code>components/</code>: Reusable UI components.
+<ul>
+<li><code>components/</code> : Further grouping of components based on functionality.
+<ul>
+<li><code>accounts</code> - Account related components</li>
+<li><code>auth</code>: Authentication layout and form components.</li>
+<li><code>awarness</code> : Components to show awareness categories.</li>
+<li><code>charts</code> : Charts components.</li>
+<li><code>home</code>: Home page dashboard components.</li>
+<li><code>hooks</code> - React hooks</li>
+<li><code>icons</code> - Icon components</li>
+<li><code>layout</code>: Application layout components.</li>
+<li><code>navbar</code>: Navigation bar components.</li>
+<li><code>search-terms</code> - Components related to search terms</li>
+<li><code>settings</code>: Component for managing settings.</li>
+<li><code>sidebar</code>: Components for the application sidebar.</li>
+<li><code>stats</code>: Components for the stats page.</li>
+<li><code>table</code>: Components related to tables.</li>
+</ul>
+</li>
+<li><code>layout/</code>: Main layout for app content.</li>
+<li><code>providers/</code>: Provider components like NextUI.</li>
+<li><code>ui/</code>: General UI components (<code>Form.tsx</code>,<code>Toast.tsx</code>).
+<ul>
+<li><code>table</code>: components related to tables.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>middleware.ts</code>: Authentication middleware.
+- <code>pages/</code>: Application pages (public, admin, API).</p>
+<ul>
+<li><code>admin/</code>: Admin dashboard and management pages.
+<ul>
+<li><code>accounts.tsx</code>: Accounts page.</li>
+<li><code>stats.tsx</code> : Statistics page</li>
+<li><code>awareness.tsx</code>: Awareness page.</li>
+<li><code>index.tsx</code>: Admin dashboard page.</li>
+<li><code>login-ws.tsx</code>:  Page for websocket login for meta ads.</li>
+<li><code>scanned.tsx</code>: Page displaying scanned ads.</li>
+<li><code>search-terms.tsx</code>: Page for managing search terms.</li>
+<li><code>settings.tsx</code>: Page to manage app settings.</li>
+</ul>
+</li>
+<li><code>api/</code>: Api routes.
+<ul>
+<li><code>auth/</code>: Authentication related api routes.
+<ul>
+<li><code>[...nextauth].ts</code>: NextAuth.js configuration API route.
+-<code>generate-token.ts</code>: API to generate jwt tokens.</li>
+<li><code>signup.ts</code>: API route for user signup.</li>
+<li><code>verify-token.ts</code>: API route to verify tokens.</li>
+</ul>
+</li>
+<li><code>hello.ts</code> : Example api route.</li>
+<li><code>meta-ads.ts</code>: API route to fetch data from meta ads API.</li>
+</ul>
+</li>
+<li><code>fonts/</code>: Custom fonts used in the application.
+<ul>
+<li><code>GeistMonoVF.woff</code>: A woff font file.</li>
+<li><code>GeistVF.woff</code>: A woff font file.</li>
+</ul>
+</li>
+<li><code>awareness.tsx</code> : Public awareness page.</li>
+<li><code>index.tsx</code> : Public Homepage.</li>
+<li><code>login.tsx</code>: Login Page.</li>
+<li><code>signup.tsx</code>: Signup Page.</li>
+</ul>
+</li>
+<li>
+<p><code>styles/</code>: Global CSS styles for the application.</p>
+<ul>
+<li><code>globals.css</code>: Global CSS styles for the application.</li>
+</ul>
+</li>
+<li>
+<p><code>utils/</code>: General Utilities and custom API calls.</p>
+<ul>
+<li><code>api.ts</code>: API calls for the application.</li>
+</ul>
+</li>
+</ul>
+<a id="md:packagejson-scripts" class="tsd-anchor"></a><h2 class="tsd-anchor-link"><code>package.json</code> Scripts<a href="#md:packagejson-scripts" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><code>dev</code>: Runs the Next.js development server (<code>next dev</code>).</li>
+<li><code>build</code>: Builds the production-ready application (<code>next build</code>).</li>
+<li><code>start</code>: Starts the Next.js production server (<code>next start</code>).</li>
+<li><code>lint</code>: Runs ESLint to check code style (<code>next lint</code>).</li>
+<li><code>docs</code>: Generates project documentation using TypeDoc (<code>npx typedoc</code>).</li>
+</ul>
+<a id="md:key-points" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Key Points<a href="#md:key-points" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>TypeScript for type safety.</li>
+<li>NextAuth for authentication.</li>
+<li>Mongoose for database interaction.</li>
+<li>Next-UI and Tailwind for styling.</li>
+<li>API endpoints proxied to a FastAPI app (<code>NEXT_PUBLIC_FASTAPI_API_URI</code>).</li>
+<li>API documentation generated in <code>/public/docs</code>.</li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:adshield-nextjs-app"><span>Ad<wbr/>Shield <wbr/>Next.js <wbr/>App</span></a><ul><li><a href="#md:setup"><span>Setup</span></a></li><li><a href="#md:tech"><span>Tech</span></a></li><li><a href="#md:folder-structure"><span>Folder <wbr/>Structure</span></a></li><li><a href="#md:packagejson-scripts"><span>package.json <wbr/>Scripts</span></a></li><li><a href="#md:key-points"><span>Key <wbr/>Points</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="index.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>adshield_nextjs - v0.1.0</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>

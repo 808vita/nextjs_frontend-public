@@ -1,0 +1,280 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>codebase-overview | adshield_nextjs - v0.1.0</title><meta name="description" content="Documentation for adshield_nextjs"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">adshield_nextjs - v0.1.0</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb"><li><a href="../index.html">adshield_nextjs</a></li><li><a href="codebase_overview.html">codebase-overview</a></li></ul></div><div class="tsd-panel tsd-typography"><a id="md:codebase-overview" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Codebase Overview<a href="#md:codebase-overview" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1><p>This document provides a concise overview of the Next.js codebase structure, key components, and their purposes.</p>
+<a id="md:folder-structure" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Folder Structure<a href="#md:folder-structure" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>
+<p><strong><code>./</code> (Root):</strong></p>
+<ul>
+<li><code>.gitignore</code>: Specifies intentionally untracked files that Git should ignore.</li>
+<li><code>next.config.mjs</code>: Next.js configuration file.</li>
+<li><code>package.json</code>: Lists project dependencies and scripts.</li>
+<li><code>postcss.config.mjs</code>: Configuration for PostCSS, including Tailwind CSS.</li>
+<li><code>tsconfig.json</code>: TypeScript configuration file.</li>
+<li><code>typedoc.json</code>: Configuration for TypeDoc documentation generation.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>documents/</code>:</strong></p>
+<ul>
+<li><code>test.md</code>: A test markdown document.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>lib/</code>:</strong></p>
+<ul>
+<li><code>auth.ts</code>: Configuration for NextAuth.js authentication.</li>
+<li><code>mongodb.ts</code>: Manages the connection to MongoDB using Mongoose.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>models/</code>:</strong></p>
+<ul>
+<li><code>Users.ts</code>: Defines the Mongoose schema and model for user data.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>schemas/</code>:</strong></p>
+<ul>
+<li><code>index.ts</code>: Defines TypeScript interfaces for request data (e.g., <code>SignupRequest</code>, <code>LoginRequest</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong><code>src/</code>:</strong></p>
+<ul>
+<li>
+<p><strong><code>components/</code>:</strong></p>
+<ul>
+<li><strong><code>components/</code>:</strong> Reusable components
+<ul>
+<li><strong><code>accounts/</code>:</strong> Components for user accounts management.
+<ul>
+<li><code>add-user.tsx</code>: Modal form to add new users.</li>
+<li><code>index.tsx</code>:  Displays a list of accounts with search and action options.</li>
+</ul>
+</li>
+<li><strong><code>auth/</code>:</strong> Layout and authentication components.
+<ul>
+<li><code>authLayout.tsx</code>: Layout wrapper for authentication pages.</li>
+<li><code>login.tsx</code>: Implements the login form.</li>
+<li><code>register.tsx</code>: Implements the registration form.</li>
+</ul>
+</li>
+<li><strong><code>awarness/</code>:</strong> Components for public awareness sections.
+-<code>AwarenessCategory.tsx</code>: Displays information about an awareness category.</li>
+<li><strong><code>charts/</code>:</strong> Components for data visualization
+<ul>
+<li><code>TreeMapChart.tsx</code>: Displays data in a treemap chart.
+-<code>steam.tsx</code>: Displays data in a steam chart.</li>
+</ul>
+</li>
+<li><strong><code>home/</code>:</strong> Components for the home dashboard.
+<ul>
+<li><code>admin-dashboard.tsx</code>: The main dashboard page when the user is an admin.</li>
+<li><code>card-agents.tsx</code>, <code>card-balance1.tsx</code> etc: components that displays statistics.</li>
+<li><code>content.tsx</code>: component for the main home page content.</li>
+<li><code>demo.tsx</code>: Live demo page with functionality to test multimodal analysis.</li>
+<li><code>features.tsx</code>: Page describing the application features.
+-<code>hero.tsx</code>: landing page component for public homepage.</li>
+</ul>
+</li>
+<li><strong><code>hooks/</code>:</strong> Custom React hooks.
+<ul>
+<li><code>useBodyLock.ts</code>: Custom hook to manage body scrolling.
+-<code>useIsomorphicLayoutEffect.ts</code> : Custom hook to manage layout effcets.
+-<code>useSettings.ts</code>: Custom hook for handling settings.</li>
+</ul>
+</li>
+<li><strong><code>icons/</code>:</strong> SVG icons. Organized into sub-folders based on their function
+<ul>
+<li><code>accounts/</code>: Icons for the accounts page.</li>
+<li><code>breadcrumb/</code>: Icons for the breadcrumb navigation.
+-<code>navbar/</code>: Icons for the navbar.
+-<code>sidebar/</code>: Icons for the sidebar.
+-<code>table/</code> : Icons for the tables.</li>
+<li><code>acme-icon.tsx</code>: Logo for the application.</li>
+<li><code>acmelogo.tsx</code>: Second logo for the application.
+-<code>community.tsx</code> A community related icon.
+-<code>searchicon.tsx</code>: Icon used for search functionality.</li>
+</ul>
+</li>
+<li><strong><code>layout/</code>:</strong> Layout components.
+-<code>adminLayout.tsx</code>: Layout for the admin pages including sidebar,navbar and content area.
+<ul>
+<li><code>layout-context.ts</code>: React Context for sidebar state management.</li>
+</ul>
+</li>
+<li><strong><code>navbar/</code>:</strong> Components for the top navigation bar
+-<code>burguer-button.tsx</code> component for burger menu in small screens.
+<ul>
+<li><code>darkmodeswitch.tsx</code>: Dark mode switch.</li>
+<li><code>navbar.styles.ts</code>: styles for the navbar.</li>
+<li><code>navbar.tsx</code>: Main navbar component
+-<code>notifications-dropdown.tsx</code>: Notification component</li>
+<li><code>user-dropdown.tsx</code>: User profile settings dropdown menu.</li>
+</ul>
+</li>
+<li><strong><code>search-terms/</code>:</strong> Components for managing search terms.
+<ul>
+<li><code>add-search-term-modal.tsx</code>: A modal for adding new search terms.
+-<code>search-term-table.tsx</code>:  Displays a table of search terms.</li>
+</ul>
+</li>
+<li><strong><code>settings/</code>:</strong> Settings components.
+<ul>
+<li><code>SettingsInput.tsx</code>: A reusable input for settings.</li>
+</ul>
+</li>
+<li><strong><code>sidebar/</code>:</strong> Components for the sidebar.
+-<code>OOFLOGO.tsx</code>: Logo for the sidebar.
+<ul>
+<li><code>collapse-items.tsx</code>: Component for collapsible menu items in sidebar.
+-<code>companies-dropdown.tsx</code>: Dropdown for company selection in the sidebar.
+-<code>sidebar-item.tsx</code>:  Individual sidebar item components.</li>
+<li><code>sidebar-menu.tsx</code>: Groups sidebar items under a common title.
+-<code>sidebar.styles.ts</code>: styles for the sidebar.</li>
+<li><code>sidebar.tsx</code>:  Main sidebar structure.</li>
+</ul>
+</li>
+<li><strong><code>stats/</code>:</strong> Components for stats dashboard
+-<code>StatCard.tsx</code>  card component that shows a particular stat.
+<ul>
+<li><code>StatsContent.tsx</code>:  Displays all the stats on the page.</li>
+</ul>
+</li>
+<li><strong><code>table/</code>:</strong> Components for table data
+<ul>
+<li><code>data.ts</code>: sample data for the tables.</li>
+<li><code>render-cell.tsx</code>: renders a cell in the table.</li>
+<li><code>table.tsx</code>: A reusable table component.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>layout/</code>:</strong> Layout Provider component
+<ul>
+<li><code>Layout.tsx</code>:  Provides the base layout for the application.</li>
+</ul>
+</li>
+<li><strong><code>providers/</code>:</strong> Provider components
+<ul>
+<li><code>ProviderNextUI.tsx</code>: Sets up the NextUI provider.</li>
+</ul>
+</li>
+<li><strong><code>ui/</code>:</strong> Reusable UI components.
+-<code>AdCard.tsx</code> : Reusable component to render Ads data.
+-<code>AdList.tsx</code> : Component to list a number of AdCards
+-<code>Form.tsx</code>: Reusable form component.
+<ul>
+<li><code>LoginSocket.tsx</code>: Component to establish the Websocket connection for Meta login.
+-<code>MultimodalAnalysis.tsx</code>:  Component that handles multimodal analysis.
+-<code>Toast.tsx</code> : Shows a success or failure message in a popup.</li>
+<li><strong><code>table/</code>:</strong> Table related components
+<ul>
+<li><code>AdsTable.tsx</code>: component to display ads data.</li>
+<li><code>Table.tsx</code>: Reusable table component with pagination.</li>
+<li><code>render-cell.tsx</code> : renders cells for table component.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>middleware.ts</code>:</strong> Defines middleware functions that run before routes.</p>
+</li>
+<li>
+<p><strong><code>pages/</code>:</strong></p>
+<ul>
+<li><code>_app.tsx</code>: Custom App component to wraps the pages with layout, session and providers.
+-<code>_document.tsx</code>: Custom document component.</li>
+<li><strong><code>admin/</code>:</strong> Pages for the admin panel.
+<ul>
+<li><code>accounts.tsx</code>: Accounts page.</li>
+<li><code>awareness.tsx</code>: Awareness page.</li>
+<li><code>index.tsx</code>: Admin dashboard page.</li>
+<li><code>login-ws.tsx</code>:  Page for websocket login for meta ads.</li>
+<li><code>scanned.tsx</code>: Page displaying scanned ads.</li>
+<li><code>search-terms.tsx</code>: Page for managing search terms.</li>
+<li><code>settings.tsx</code>: Page to manage app settings.
+-<code>stats.tsx</code>: Page that renders stats for the application.</li>
+</ul>
+</li>
+<li><strong><code>api/</code>:</strong> API routes.
+<ul>
+<li><strong><code>auth/</code>:</strong> API routes related to authentication.
+<ul>
+<li><code>[...nextauth].ts</code>: NextAuth.js configuration API route.
+-<code>generate-token.ts</code>: API to generate jwt tokens.</li>
+<li><code>signup.ts</code>: API route for user signup.</li>
+<li><code>verify-token.ts</code>: API route to verify tokens.</li>
+</ul>
+</li>
+<li><code>hello.ts</code> : Example api route.</li>
+<li><code>meta-ads.ts</code>: API route to fetch data from meta ads API.
+-<code>awareness.tsx</code> : Public awareness page.</li>
+</ul>
+</li>
+<li><strong><code>fonts/</code>:</strong> Custom font files
+<ul>
+<li><code>GeistMonoVF.woff</code>: A woff font file.</li>
+<li><code>GeistVF.woff</code>: A woff font file.
+-<code>index.tsx</code> : Public home page
+-<code>login.tsx</code>: Login page for the application.
+-<code>signup.tsx</code>: Signup page for the application.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>styles/</code>:</strong> Global CSS files.</p>
+<ul>
+<li><code>globals.css</code>: Global CSS styles for the application.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>utils/</code>:</strong> Utility functions.
+-<code>api.ts</code>: API calls for the application.</p>
+</li>
+</ul>
+<a id="md:key-technologies" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Key Technologies<a href="#md:key-technologies" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Next.js:</strong> React framework for building web applications.</li>
+<li><strong>NextAuth.js:</strong> Authentication library for Next.js.</li>
+<li><strong>Mongoose:</strong> MongoDB object modeling tool.</li>
+<li><strong>Tailwind CSS:</strong> Utility-first CSS framework.</li>
+<li><strong>NextUI:</strong> A React UI library.</li>
+<li><strong>Formik:</strong> Library to manage the state of forms.</li>
+<li><strong>TypeDoc</strong> Documentation generation tool for typescript</li>
+</ul>
+<a id="md:page-names" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Page Names<a href="#md:page-names" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>Public Pages:</strong>
+<ul>
+<li><code>/</code> - Homepage</li>
+<li><code>/awareness</code> - public awareness page.</li>
+<li><code>/login</code> - Login page.</li>
+<li><code>/signup</code> - Register page.</li>
+</ul>
+</li>
+</ul>
+<pre><code>- **Admin Pages:**
+  - `/admin` - Admin dashboard.
+  - `/admin/accounts` - Accounts listing page.
+   -`/admin/stats` - Statistics listing page.
+  - `/admin/awareness` - Admin awareness page.
+  - `/admin/scanned` - List of all scanned ads.
+ - `/admin/search-terms` - Search term management page
+ - `/admin/settings` - Settings page
+  -`/admin/login-ws`:  Meta login with websocket page.
+</code></pre>
+<a id="md:important-notes-for-a-new-developer" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Important notes for a new developer<a href="#md:important-notes-for-a-new-developer" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>API Routes</strong>: all api routes reside within <code>pages/api</code> folder</li>
+<li><strong>Component Organization:</strong> Components are grouped by functionality within the <code>src/components</code> directory (UI components, layout, features, etc.)</li>
+<li><strong>Type Safety:</strong> TypeScript is used throughout the project for type checking.</li>
+<li><strong>State Management</strong>: React Context, Hooks and useState are used to manage application states.</li>
+<li><strong>Authentication</strong>: Next-Auth is being used to handle authentication.</li>
+<li><strong>Database</strong>: Mongoose is being used to manage the database interactions.</li>
+<li><strong>UI Library</strong>: Next-UI is being used to style the components.</li>
+<li><strong>Validation:</strong> Yup and Formik is used for form validation.</li>
+<li><strong>Documentation</strong>: Typedoc is set up to generate API documentation in <code>/public/docs</code> when running the <code>docs</code> script.</li>
+</ul>
+<p>This overview should help a new developer understand the basic structure and organization of the project.</p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:codebase-overview"><span>Codebase <wbr/>Overview</span></a><ul><li><a href="#md:folder-structure"><span>Folder <wbr/>Structure</span></a></li><li><a href="#md:key-technologies"><span>Key <wbr/>Technologies</span></a></li><li><a href="#md:page-names"><span>Page <wbr/>Names</span></a></li><li><a href="#md:important-notes-for-a-new-developer"><span>Important notes for a new developer</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>adshield_nextjs - v0.1.0</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base=".."><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>

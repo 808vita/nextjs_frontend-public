@@ -1,0 +1,87 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>fastapi-codebase-overview | adshield_nextjs - v0.1.0</title><meta name="description" content="Documentation for adshield_nextjs"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">adshield_nextjs - v0.1.0</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb"><li><a href="../index.html">adshield_nextjs</a></li><li><a href="fastapi_codebase_overview.html">fastapi-codebase-overview</a></li></ul></div><div class="tsd-panel tsd-typography"><a id="md:codebase-overview" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Codebase Overview<a href="#md:codebase-overview" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1><p>This document provides a summary of the codebase structure and functionality based on the provided files.</p>
+<a id="md:file-descriptions" class="tsd-anchor"></a><h2 class="tsd-anchor-link">File Descriptions<a href="#md:file-descriptions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><a id="md:configuration-files" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Configuration Files<a href="#md:configuration-files" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong><code>.dockerignore</code></strong>: Specifies files and directories to be ignored by Docker during image builds.
+<ul>
+<li>Ignores files like <code>.env</code> , <code>conda_scraper</code>, and <code>app/__pycache__</code>.</li>
+</ul>
+</li>
+<li><strong><code>.gitignore</code></strong>: Specifies files and directories that should be ignored by Git.
+<ul>
+<li>Ignores python bytecode, build, distribution, test, environment, IDE related files/folders and <code>crawl_project.py</code> , <code>project_structure.txt</code> etc.</li>
+</ul>
+</li>
+</ul>
+<a id="md:docker-configuration" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Docker Configuration<a href="#md:docker-configuration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong><code>Dockerfile</code></strong>: Defines the steps to create a Docker image for the application.
+<ul>
+<li>Uses a base Python image (<code>python:3.13.1</code>).</li>
+<li>Sets the working directory to <code>/code</code>.</li>
+<li>Copies and installs dependencies from <code>requirements.txt</code>.</li>
+<li>Installs playwright browser and dependencies.</li>
+<li>Copies the <code>app</code> directory to <code>/code/app</code>.</li>
+<li>Specifies the command to run the FastAPI application using <code>fastapi run app/main.py --port 80</code>.</li>
+</ul>
+</li>
+</ul>
+<a id="md:application-code-app" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Application Code (<code>app/</code>)<a href="#md:application-code-app" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><strong><code>app/__init__.py</code></strong>: An empty initialization file, marking the <code>app</code> directory as a Python package.</li>
+<li><strong><code>app/api/</code></strong>: Contains files defining API endpoints.
+<ul>
+<li><strong><code>gemini.py</code></strong>: Defines API routes for interacting with the Gemini AI model for text, image, multimodal, search grounding and translation analysis.</li>
+<li><strong><code>meta.py</code></strong>: Defines API routes for fetching ads data from Meta Ad Library and handling login with playwright. Includes routes <code>/meta-ads</code> <code>/screenshot</code>, <code>/meta-login</code> and a websocket <code>/meta-login-ws</code> for facebook login.</li>
+<li><strong><code>mongodb.py</code></strong>: Defines API routes for testing db connection, accessing and modifying data related to settings, search terms, checked meta ads, categories and reported ads data from mongodb.</li>
+</ul>
+</li>
+<li><strong><code>app/main.py</code></strong>: The main application file.
+<ul>
+<li>Initializes the FastAPI application.</li>
+<li>Configures CORS middleware.</li>
+<li>Includes the API routers from <code>gemini.py</code>, <code>meta.py</code> and <code>mongodb.py</code>.</li>
+<li>Defines a scheduled background task to fetch meta ads data using apscheduler.</li>
+<li>Configures Gemini AI model with API key.</li>
+<li>Starts the mongodb connection and scheduler using <code>lifespan</code> context manager.</li>
+</ul>
+</li>
+<li><strong><code>app/mongodb.py</code></strong>: Manages the MongoDB connection.
+<ul>
+<li>Establishes a reusable database connection using <code>AsyncIOMotorClient</code>.</li>
+<li>Includes functions to connect and close the database.</li>
+</ul>
+</li>
+<li><strong><code>app/scheduler_utils.py</code></strong>: Contains utilities and functions for scheduling tasks and data processing.
+<ul>
+<li>Includes function to process ads fetched from meta, analyze with Gemini and store it to db.</li>
+<li>Includes function to analyze ads for category with Gemini.</li>
+<li>Includes function to fetch ads from meta ad api.</li>
+</ul>
+</li>
+<li><strong><code>app/schemas.py</code></strong>: Defines data models using Pydantic for request and response validation.
+<ul>
+<li>Includes schemas for  text, image, multimodal, and search grounding analysis requests and responses.</li>
+<li>Includes schemas for  meta ad requests, screenshots, search terms, settings, access token, categories, reported ads,  and public awareness.</li>
+</ul>
+</li>
+<li><strong><code>app/utils.py</code></strong>: Contains utility functions.
+<ul>
+<li>Includes functions for text, image and multimodal analysis using Gemini.</li>
+<li>Includes search grounding with Gemini.</li>
+<li>Includes functions for interacting with Meta Ad Library API, such as fetching ad data and generating screenshot URLs.</li>
+<li>Includes full page screenshots with playwright</li>
+<li>Includes database interaction functions.</li>
+<li>Includes functions to create, update, delete, fetch data for settings, access token, search terms, and reported ads.</li>
+<li>Includes utility function for gemini based translation</li>
+<li>Includes utility to fetch stats for ads scanned, is scam, search terms, category, search terms extracted etc.</li>
+</ul>
+</li>
+</ul>
+<a id="md:key-functionality" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Key Functionality<a href="#md:key-functionality" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>API Endpoints</strong>: The application exposes a set of API endpoints for various functionalities including Gemini AI integration, Meta Ads data retrieval, and database interaction.</li>
+<li><strong>Gemini AI Integration</strong>: Uses Gemini for analyzing text, images, multimodal data, and search queries, also for translation.</li>
+<li><strong>Meta Ads Library Integration</strong>: Fetches ad data from the Meta Ad Library using the Meta API.</li>
+<li><strong>Database Integration</strong>: Utilizes MongoDB to store and retrieve application data.</li>
+<li><strong>Screenshot</strong>: Takes a full page screenshot with playwright.</li>
+<li><strong>Scheduled Tasks</strong>: Includes a background scheduler to periodically fetch ads data from Meta API and process it.</li>
+<li><strong>Data Validation</strong>: Uses Pydantic for data validation.</li>
+<li><strong>Login</strong>: Allows login to facebook by using playwright.</li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:codebase-overview"><span>Codebase <wbr/>Overview</span></a><ul><li><a href="#md:file-descriptions"><span>File <wbr/>Descriptions</span></a></li><li><ul><li><a href="#md:configuration-files"><span>Configuration <wbr/>Files</span></a></li><li><a href="#md:docker-configuration"><span>Docker <wbr/>Configuration</span></a></li><li><a href="#md:application-code-app"><span>Application <wbr/>Code (app/)</span></a></li></ul></li><li><a href="#md:key-functionality"><span>Key <wbr/>Functionality</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../index.html"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>adshield_nextjs - v0.1.0</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base=".."><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>
